@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3214ea03-43de-49b5-9fe5-427b8f21a3fc" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1g9o0tF5E8PXyDD3V516clYdyld" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager" selected="Python.roll-crit_hits_revisited">
+    <configuration name="Python3.8" type="PythonConfigurationType" factoryName="Python">
+      <module name="rpg" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="rpg" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="roll-crit_hits_revisited" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="rpg" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/roll-crit_hits_revisited.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Python3.8" />
+      <item itemvalue="Python.roll-crit_hits_revisited" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.roll-crit_hits_revisited" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3214ea03-43de-49b5-9fe5-427b8f21a3fc" name="Default Changelist" comment="" />
+      <created>1597535949972</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597535949972</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="417" y="213" key="#Inspections" timestamp="1597536345480">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="417" y="213" key="#Inspections/0.23.1680.1027@0.23.1680.1027" timestamp="1597536345480" />
+    <state x="493" y="358" key="#Notifications" timestamp="1597536243530">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="493" y="358" key="#Notifications/0.23.1680.1027@0.23.1680.1027" timestamp="1597536243530" />
+    <state x="247" y="189" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597536613947">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="247" y="189" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597536613947" />
+    <state width="1379" height="338" key="GridCell.Tab.0.bottom" timestamp="1597765859171">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1379" height="338" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859171" />
+    <state width="1379" height="338" key="GridCell.Tab.0.center" timestamp="1597765859170">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1379" height="338" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859170" />
+    <state width="1379" height="338" key="GridCell.Tab.0.left" timestamp="1597765859170">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1379" height="338" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859170" />
+    <state width="1379" height="338" key="GridCell.Tab.0.right" timestamp="1597765859170">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1379" height="338" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859170" />
+    <state width="1379" height="338" key="GridCell.Tab.1.bottom" timestamp="1597765859172">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1379" height="338" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859172" />
+    <state width="1379" height="338" key="GridCell.Tab.1.center" timestamp="1597765859171">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1379" height="338" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859171" />
+    <state width="1379" height="338" key="GridCell.Tab.1.left" timestamp="1597765859171">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1379" height="338" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859171" />
+    <state width="1379" height="338" key="GridCell.Tab.1.right" timestamp="1597765859171">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1379" height="338" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859171" />
+    <state x="284" y="166" key="SettingsEditor" timestamp="1597536492730">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="284" y="166" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597536492730" />
+  </component>
+</project>

@@ -13,7 +13,7 @@ import random
 import textwrap
 
 # Other Libs
-from typing import Any, Union
+# from typing import Any, Union
 # from colorama import Fore, Style
 
 # Owned
@@ -23,7 +23,7 @@ __author__ = "Buckley Collum"
 __copyright__ = "Copyright 2020, QuoinWorks"
 __credits__ = ["Buckley Collum"]
 __license__ = "GNU General Public License v3.0"
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 __maintainer__ = "Buckley Collum"
 __email__ = "buckleycollum@gmail.com"
 __status__ = "Dev"
@@ -38,16 +38,61 @@ class Die(object):
 
 
 class Weapon:
-	def __init__(self, name, dice, sides, damagetype):
+	def __init__(self, name='', dice=1, sides=4, damagetype='slashing', bonus=0, prof=False, ):
 		self.name = name
 		self.dice = dice
 		self.sides = sides
 		self.damagetype = damagetype
+		self.bonus = bonus
 
 	def roll(self):
 		rolls = [random.randint(1, self.sides) for _ in range(self.dice)]
 		# print(rolls)
 		return rolls
+
+
+class PC:
+	def __init__(self, name='',
+				 cclass = None, race = None, background = None, level = 1,
+				 cstr = 8, cdex = 8, ccon = 8, cint = 8, cwis = 8, ccha = 8,
+				 ac = 8, hp = 1):
+		self.name = name
+		self.cclass = cclass
+		self.race = race
+		self.background = background
+		self.level = level
+		self.cstr = cstr
+		self.cdex = cdex
+		self.ccon = ccon
+		self.cint = cint
+		self.cwis = cwis
+		self.ccha = ccha
+		self.ac = ac
+		self.hp = hp
+
+	def attackbonus(self):
+		return proficiency(self.level) + scoremod(self.cstr)
+
+	def damagebonus(self):
+		return scoremod(self.cstr)
+
+	def save(self, score):
+		return scoremod(score) + proficiencymod(score)
+
+
+class NPC:
+	def __init__(self, name, family, cr, as_str, as_dex, as_com, as_int, as_wis, as_cha, ac, hp):
+		self.name = name
+		self.family = family
+		self.cr = cr
+		self.as_str = as_str
+		self.as_dex = as_dex
+		self.as_com = as_com
+		self.as_int = as_int
+		self.as_wis = as_wis
+		self.as_cha = as_cha
+		self.ac = ac
+		self.hp = hp
 
 
 class Color:
@@ -60,6 +105,74 @@ class Color:
 	BOLD = '\033[1m'
 	UNDERLINE = '\033[4m'
 
+
+characterClass = {
+	'artificer': {
+		'proficiency': {
+			'weapon': ['simple']
+		}
+	},
+	'barbarian': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'bard': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'cleric': {
+		'proficiency': {
+			'weapon': ['simple']
+		}
+	},
+	'druid': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'fighter': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'monk': {
+		'proficiency': {
+			'weapon': ['simple']
+		}
+	},
+	'paladin': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'ranger': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'rogue': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'sorcerer': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'warlock': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+	'wizard': {
+		'proficiency': {
+			'weapon': ['simple', 'martial']
+		}
+	},
+}
 
 damages = {
 	'bludgeoning':
@@ -366,7 +479,16 @@ damages = {
 	),
 }
 
-injuries = {
+addon = {
+	'none': [None, None],
+	'minor': ['injury', 'minor'],
+	'major': ['injury', 'major'],
+	'insanity': ['insanity', ''],
+	'insanity_adv': ['insanity', 'advantage'],
+	'insanity_dis': ['insanity', 'disadvantage'],
+}
+
+injuryDescription = {
 	'minor':
 		(
 			"Injured leg! The creature’s movement speed is reduced by 10 ft.",
@@ -383,12 +505,12 @@ injuries = {
 	'major':
 		(
 			"Crippled leg! The creature’s movement speed is reduced by 10 feet and "
-			"it has disadvantage on Dexterity saving throws.",
+				"it has disadvantage on Dexterity saving throws.",
 			"Crippled arm! Randomly determine one of the creature’s arms. "
-			"That arm cannot be used to hold an item and any ability check requiring "
-			"that arm automatically fails or has disadvantage (DM’s choice).",
+				"That arm cannot be used to hold an item and any ability check requiring "
+				"that arm automatically fails or has disadvantage (DM’s choice).",
 			"Severely wounded! The creature’s maximum hit points are reduced by an "
-			"amount equivalent to the damage dealt by the attack.",
+				"amount equivalent to the damage dealt by the attack.",
 			"Edge of death! The creature has disadvantage on Constitution and death saving throws.",
 			"My eyes! The creature is blinded.",
 			"Decapitated! The creature is dead.",
@@ -396,65 +518,68 @@ injuries = {
 }
 
 
-insanities = {
-	1:	'Synesthesia. You can hear colors, smell sounds, or taste textures. '
-		'Regardless of the specific manifestation, you have disadvantage on all Perception and Investigation skill checks.',
-	2:	'Kleptomania. Once per day when you are in a personal residence or marketplace, '
-		'the DM can call on you to succeed on a Wisdom saving throw (DC 12) or '
-		'attempt to steal an item of insignificant practical and monetary value.',
-	3:	'Paranoia. Once per day following an interaction with another creature '
-		'(including other PCs) the DM can call on you to succeed on a Wisdom saving '
-		'throw (DC 12) or you suspect that creature is secretly plotting against you.',
-	4:	'Obsession. Choose a person or personal interest you are obsessed with. '
-		'Once per day, when you are presented with an opportunity to interact with or '
-		'learn more about the subject of your obsession, then the DM can call on you '
-		'to succeed on a Wisdom saving throw (DC 14) or ignore everything else to '
-		'obsess over the object of your fascination.',
-	5:	'Addiction. Choose a behavior or substance you have used.'
-		'Once per day, when you are presented with an opportunity to do '
-		'the behavior or use the substance, the DM can call on you to succeed on a Wisdom '
-		'saving throw (DC 14) or ignore everything else to indulge in your vice.',
-	6:	'Odd Thinking. Once per day when you hear a rational explanation for an event or '
-		'occurrence, your DM may call on you to succeed on a Wisdom saving throw (DC 12) or '
-		'you reject the rational explanation for a conspiratorial or fantastical explanation.',
-	7:	'Narcissism. When you take an action or series of action that doesn\’t directly benefit you, '
-		'you must pass a Wisdom saving throw (DC 11) or you can’t take that action or series of actions. '
-		'If any self-sacrifice on your part would be required, then the DC of the saving throw is '
-		'increased to 16.',
-	8:	'Delusional. When you gain this insanity, the DM will tell you a belief that you have. '
-		'No matter what evidence is presented to the contrary, so long as you have this insanity, '
-		'you cannot be persuaded that this belief is not true.',
-	9:	'Pica. Once per day the DM can call on you to pass a Wisdom saving throw (DC 14) or '
-		'immediately eat one non-food object (such as dirt, napkins, or a small piece of jewelry) '
-		'of the DM\’s choice.',
-	10: 'Retrograde amnesia. You forget everything about your personal life prior to the moment '
-		'you received this insanity.',
-	11: 'Overwhelmed. If you do not have immunity or resistance to psychic damage, '
-		'then you gain vulnerability to psychic damage. If you have resistance to '
-		'psychic damage, then you lose it. If you have immunity to psychic damage, '
-		'then you lose it but gain resistance to psychic damage.',
-	12: 'Anterograde amnesia. Whenever you try to recall a fact you learned since you '
-		'received this insanity, make a Wisdom saving throw (DC 12). If you fail you '
-		'cannot recall the fact.',
-	13: 'Dependence. You must pass a Wisdom saving throw (DC 14) to take an action '
-		'that one or more of your allies disapprove of.',
-	14: 'Anxious. You have disadvantage on saving throws against being frightened. '
-		'Additionally, once per day the DM can call on you to succeed a Wisdom saving '
-		'throw (DC 14) or be frightened by a creature of the DM’s choosing for the next minute.',
-	15: 'Mute. Whenever you wish to speak aloud (including casting a spell that has verbal components), '
-		'then you must succeed on a Wisdom saving throw (DC 13) to do so.',
-	16: 'Narcolepsy. You have disadvantage on saving throws against sleeping or unconsciousness. '
-		'Once per day the DM may call on you to succeed on a Constitution saving throw (DC 12) or '
-		'fall unconscious for one minute or until you take damage or another creature spends '
-		'their action trying to rouse you.',
-	17: 'Insomnia. You cannot take long rests and your short rests take 8 hours to complete.',
-	18: 'Homicidal. After each long rest you must pass a Wisdom saving throw (DC 14) or be '
-		'overcome with the urge to end the life of a humanoid creature and you cannot benefit '
-		'from another long rest until you do so.',
-	19: 'Suicidal. After each long rest you must pass a Wisdom saving throw (DC 12) or '
-		'make an attempt to end your own life.',
-	20: 'Catatonia. You are unconscious for 10d10 years.',
-}
+def insanity(i):
+	switcher = {
+		1:	'Synesthesia. You can hear colors, smell sounds, or taste textures. '
+			'Regardless of the specific manifestation, you have disadvantage on all '
+			'Perception and Investigation skill checks.',
+		2:	'Kleptomania. Once per day when you are in a personal residence or marketplace, '
+			'the DM can call on you to succeed on a Wisdom saving throw (DC 12) or '
+			'attempt to steal an item of insignificant practical and monetary value.',
+		3:	'Paranoia. Once per day following an interaction with another creature '
+			'(including other PCs) the DM can call on you to succeed on a Wisdom saving '
+			'throw (DC 12) or you suspect that creature is secretly plotting against you.',
+		4:	'Obsession. Choose a person or personal interest you are obsessed with. '
+			'Once per day, when you are presented with an opportunity to interact with or '
+			'learn more about the subject of your obsession, then the DM can call on you '
+			'to succeed on a Wisdom saving throw (DC 14) or ignore everything else to '
+			'obsess over the object of your fascination.',
+		5:	'Addiction. Choose a behavior or substance you have used.'
+			'Once per day, when you are presented with an opportunity to do '
+			'the behavior or use the substance, the DM can call on you to succeed on a Wisdom '
+			'saving throw (DC 14) or ignore everything else to indulge in your vice.',
+		6:	'Odd Thinking. Once per day when you hear a rational explanation for an event or '
+			'occurrence, your DM may call on you to succeed on a Wisdom saving throw (DC 12) or '
+			'you reject the rational explanation for a conspiratorial or fantastical explanation.',
+		7:	'Narcissism. When you take an action or series of action that doesn’t directly benefit you, '
+			'you must pass a Wisdom saving throw (DC 11) or you can’t take that action or series of actions. '
+			'If any self-sacrifice on your part would be required, then the DC of the saving throw is '
+			'increased to 16.',
+		8:	'Delusional. When you gain this insanity, the DM will tell you a belief that you have. '
+			'No matter what evidence is presented to the contrary, so long as you have this insanity, '
+			'you cannot be persuaded that this belief is not true.',
+		9:	'Pica. Once per day the DM can call on you to pass a Wisdom saving throw (DC 14) or '
+			'immediately eat one non-food object (such as dirt, napkins, or a small piece of jewelry) '
+			'of the DM’s choice.',
+		10: 'Retrograde amnesia. You forget everything about your personal life prior to the moment '
+			'you received this insanity.',
+		11: 'Overwhelmed. If you do not have immunity or resistance to psychic damage, '
+			'then you gain vulnerability to psychic damage. If you have resistance to '
+			'psychic damage, then you lose it. If you have immunity to psychic damage, '
+			'then you lose it but gain resistance to psychic damage.',
+		12: 'Anterograde amnesia. Whenever you try to recall a fact you learned since you '
+			'received this insanity, make a Wisdom saving throw (DC 12). If you fail you '
+			'cannot recall the fact.',
+		13: 'Dependence. You must pass a Wisdom saving throw (DC 14) to take an action '
+			'that one or more of your allies disapprove of.',
+		14: 'Anxious. You have disadvantage on saving throws against being frightened. '
+			'Additionally, once per day the DM can call on you to succeed a Wisdom saving '
+			'throw (DC 14) or be frightened by a creature of the DM’s choosing for the next minute.',
+		15: 'Mute. Whenever you wish to speak aloud (including casting a spell that has verbal components), '
+			'then you must succeed on a Wisdom saving throw (DC 13) to do so.',
+		16: 'Narcolepsy. You have disadvantage on saving throws against sleeping or unconsciousness. '
+			'Once per day the DM may call on you to succeed on a Constitution saving throw (DC 12) or '
+			'fall unconscious for one minute or until you take damage or another creature spends '
+			'their action trying to rouse you.',
+		17: 'Insomnia. You cannot take long rests and your short rests take 8 hours to complete.',
+		18: 'Homicidal. After each long rest you must pass a Wisdom saving throw (DC 14) or be '
+			'overcome with the urge to end the life of a humanoid creature and you cannot benefit '
+			'from another long rest until you do so.',
+		19: 'Suicidal. After each long rest you must pass a Wisdom saving throw (DC 12) or '
+			'make an attempt to end your own life.',
+		20: 'Catatonia. You are unconscious for 10d10 years.',
+	}
+	return switcher.get(i, f"Invalid roll: {i}")
 
 
 def roll(d=20):
@@ -462,21 +587,55 @@ def roll(d=20):
 	return random.randint(1, d)
 
 
-def attack(target=None, weapon=None, advantage=False, disadvantage=False, condition=None):
-	output = f"Attacking {'' if target == None else target} with {weapon.name}."
+def advantage():
+	return max([roll(20) for _ in range(2)])
+
+
+def disadvantage():
+	return min([roll(20) for _ in range(2)])
+
+
+def proficiency(level):
+	return (level - 1) // 4 + 2
+
+
+def scoremod(score):
+	return score // 2 - 5
+
+
+def append(incoming, hunt, new):
+	if hunt.lower() in incoming.lower():
+		index = incoming.lower().find(hunt.lower())
+		return incoming[:index + len(hunt)] + new + incoming[index + len(hunt):]
+	else:
+		return incoming
+
+
+def attack(attacker=None, target=None, weapon=None, adv=False, dis=False, condition=None):
+	attackbonus = 0
+	damagebonus = 0
+
+	if attacker is not None:
+		attackbonus += attacker.attackbonus() + weapon.bonus
+		damagebonus += attacker.damagebonus() + weapon.bonus
+
+	output = f"{'' if attacker is None else attacker.name+'`s '} Attacking {'' if target is None else target} with {weapon.name}."
 	print(f"{' '.join(output.split())}")
-	if advantage or disadvantage:
-		rolls = [roll(20) for x in range(2)]
-		myroll = rolls.max() if advantage else rolls.min()
+	if condition:
+		# ToDo: placeholder to handle influence of condition, e.g., blinded
+		pass
+	if adv or dis:
+		rolls = [roll(20) for _ in range(2)]
+		myroll = max(rolls) if advantage else min(rolls)
 	else:
 		myroll = roll(20)
-	# myroll = 20
+	# myroll = 20		# Critical 20, for testing
 	if myroll == 1:
 		criticalmiss()
 	elif myroll == 20:
-		criticalhit(weapon)
+		criticalhit(attacker, weapon, target)
 	else:
-		hitanddamage(myroll, weapon)
+		hitanddamage(attacker, weapon, myroll + attackbonus, target)
 
 
 def criticalmiss():
@@ -492,7 +651,8 @@ def criticalmiss():
 		print("You missed spectacularly, and your opponent snickered at your failure.")
 
 
-def criticalhit(weapon):
+def criticalhit(attacker, weapon, target=None):
+	"""Critical Hit"""
 	print(f"{Color.HEADER}Critical Hit!{Color.ENDC}")
 	rollmatch = {
 		1: 0,
@@ -508,28 +668,38 @@ def criticalhit(weapon):
 	}
 
 	mycrit = roll(20)
-	title, value, effect, injurytype = damages[weapon.damagetype][rollmatch[mycrit]]
+	title, value, effect, also = damages[weapon.damagetype][rollmatch[mycrit]]
 	critdamage = pointscritdamage(weapon, value)
 	wrapper = textwrap.TextWrapper(width=40, initial_indent="* ", subsequent_indent=" + ")
-	output = f" {Color.HEADER}{title}{Color.ENDC} Your {weapon.name.lower()} does " \
-			 f"{Color.WARNING}{sum(critdamage)}{Color.ENDC} {critdamage} points of " \
-			 f"{Color.WARNING}{weapon.damagetype}{Color.ENDC} damage.\n"
+	output = f" {Color.HEADER}{title}{Color.ENDC} Your {weapon.name} does " \
+			f"{Color.WARNING}{sum(critdamage)+attacker.damagebonus()}{Color.ENDC} {critdamage} points of " \
+			f"{Color.WARNING}{weapon.damagetype}{Color.ENDC} damage.\n"
 	if effect:
-		if 'the creature' in effect.lower():
-			index = effect.lower().find('the creature')
-			revision1 = effect[:index+13] + ' TARGET' + effect[index:]
+		output += f"  {Color.FAIL}{effect}{Color.ENDC}\n"
+
+	# ToDo: Add Insanity handling
+	#  if also == 'insanity':
+	if also == '':
+		""" HACK to handle damage field that has '' instead of 'none' """
+		also = 'none'
+	what, howmuch = addon[also]
+	# print(f" * {howmuch} {what}")
+	if what == 'injury':
+		output += f"  {Color.FAIL}{howmuch.title()} Injury: {injury(howmuch)}{Color.ENDC}\n"
+	elif what == 'insanity':
+		output += f"  {Color.FAIL}Insanity: "
+		if howmuch == 'advantage':
+			output += f"{insanity(advantage())}"
+		elif howmuch == 'disadvantage':
+			output += f"{insanity(disadvantage())}"
 		else:
-			revision1 = effect
-		if 'the same amount' in revision1.lower():
-			index = revision1.lower().find('the same amount')
-			revision2 = revision1[:index+15] + f" ({sum(critdamage)}" + revision1[index:]
-		else:
-			revision2 = revision1
-		output += f"  {Color.FAIL}{revision2.capitalize()}{Color.ENDC}\n"
-	if injurytype:
-		if injurytype == 'insanity':
-		output += f"  {Color.FAIL}{injurytype.title()} Injury: {injury(injurytype)}{Color.ENDC}\n"
-	wrapper.text = output
+			output += f"{insanity(roll())}"
+		output += f"{Color.ENDC}\n"
+	# ToDo: Clean-up TARGET name added into output
+	revision1 = (append(output, 'The Creature', f" {target}") if target is not None else effect)
+	revision2 = append(revision1, 'the same amount', f" ({sum(critdamage)})")
+
+	wrapper.text = revision2
 	print(f"{wrapper.text}")
 
 
@@ -551,10 +721,12 @@ def pointscritdamage(weapon, value):
 	return critdamage
 
 
-def hitanddamage(attackroll, weapon):
+def hitanddamage(attacker, weapon, attackroll, target=None):
 	damage = weapon.roll()
 	output = f" Your Attack roll is {Color.OKGREEN}{attackroll}{Color.ENDC}."\
-		f" Your {weapon.name.lower()} caused {Color.OKGREEN}{sum(damage)}{Color.ENDC}"\
+		f" Your {weapon.name} "
+	output += 'caused ' if target is None else f"targets {target} for "
+	output += f"{Color.OKGREEN}{sum(damage)+attacker.attackbonus()}{Color.ENDC}"\
 		f" {damage if weapon.dice > 1 else ''} points of " \
 		f"{Color.OKGREEN}{weapon.damagetype.capitalize()}{Color.ENDC} damage."
 	print(" ".join(output.split()))
@@ -571,18 +743,21 @@ def injury(injurytype=''):
 		17: 4, 18: 4, 19: 4,
 		20: 5
 	}
-	return injuries[injurytype][rollmatch[roll(20)]]
+	return injuryDescription[injurytype][rollmatch[roll(20)]]
 
 
 def main():
-	longsword = Weapon("Longsword", 1, 8, 'slashing')
-	maul = Weapon("Maul", 2, 6, 'bludgeoning')
-	greatsword = Weapon("Greatsword", 2, 6, 'slashing')
-	dagger = Weapon("Dagger", 1, 4, 'piercing')
-	lance = Weapon("Lance", 1, 12, 'piercing')
+	hero = PC(name="Varis", cclass='paladin', level=6, cstr=18, cdex=12, ccon=12, cint=10, cwis=12, ccha=16)
+	# longsword = Weapon("Longsword", 1, 8, 'slashing')
+	# maul = Weapon("Maul", 2, 6, 'bludgeoning')
+	# greatsword = Weapon("Greatsword", 2, 6, 'slashing')
+	# dagger = Weapon("Dagger", 1, 4, 'piercing')
+	pestilence = Weapon("Dagger of Pestilence", random.choice([1,2,3]), 4, random.choice(list(damages.keys())))
+	lance = Weapon("Lance", random.choice([1,2,3]), 12, random.choice(list(damages.keys())))
 	# print(f"{longsword.name} dmg = {longsword.roll()}")
-	attack(weapon=random.choice([longsword, maul, greatsword, dagger, lance]))
+	attack(attacker=hero, weapon=random.choice([pestilence, lance]), target=random.choice(["Orc", "Bandit", None]))
 
+	print()
 
 # print(injury(random.choice([True, False])))
 
