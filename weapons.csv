@@ -1,0 +1,37 @@
+name,category,distance,cost,damagetype,rollstr,weight,properties
+Club,simple,melee,1 sp,bludgeoning,1d4,2 lb.,Light
+Dagger,simple,melee,2 gp,piercing,1d4,1 lb.,"Finesse, light, thrown (range 20/60)"
+Greatclub,simple,melee,2 sp,bludgeoning,1d8,10 lb.,Two-handed
+Handaxe,simple,melee,5 gp,slashing,1d6,2 lb.,"Light, thrown (range 20/60)"
+Javelin,simple,melee,5 sp,piercing,1d6,2 lb.,Thrown (range 30/120)
+Light Hammer,simple,melee,2 gp,bludgeoning,1d4,2 lb.,"Light, thrown (range 20/60)"
+Mace,simple,melee,5 gp,bludgeoning,1d6,4 lb.,
+Quarterstaff,simple,melee,2 sp,bludgeoning,1d6,4 lb.,Versatile (1d8)
+Sickle,simple,melee,1 gp,slashing,1d4,2 lb.,Light
+Spear,simple,melee,1 gp,piercing,1d6,3 lb.,"Thrown (range 20/60), versatile (1d8)"
+Light Crossbow,simple,ranged,25 gp,piercing,1d8,5 lb.,"Ammunition (range 80/320), loading, two-handed"
+Dart,simple,ranged,5 cp,piercing,1d4,1/4 lb.,"Finesse, thrown (range 20/60)"
+Shortbow,simple,ranged,25 gp,piercing,1d6,2 lb.,"Ammunition (range 80/320), two-handed"
+Sling,simple,ranged,1 sp,bludgeoning,1d4,1/4 lb.,Ammunition (range 30/120)
+Battleaxe,martial,melee,10 gp,slashing,1d8,4 lb.,Versatile (1d10)
+Flail,martial,melee,10 gp,bludgeoning,1d8,2 lb.,
+Glaive,martial,melee,20 gp,slashing,1d10,6 lb.,"Heavy, reach, two-handed"
+Greataxe,martial,melee,30 gp,slashing,1d12,7 lb.,"Heavy, two-handed"
+Greatsword,martial,melee,50 gp,slashing,2d6,6 lb.,"Heavy, two-handed"
+Halberd,martial,melee,20 gp,slashing,1d10,6 lb.,"Heavy, reach, two-handed"
+Lance,martial,melee,10 gp,piercing,1d12,6 lb.,"Reach, special"
+Longsword,martial,melee,15 gp,slashing,1d8,3 lb.,Versatile (1d10)
+Maul,martial,melee,10 gp,bludgeoning,2d6,10 lb.,"Heavy, two-handed"
+Morningstar,martial,melee,15 gp,piercing,1d8,4 lb.,
+Pike,martial,melee,5 gp,piercing,1d10,18 lb.,"Heavy, reach, two-handed"
+Rapier,martial,melee,25 gp,piercing,1d8,2 lb.,Finesse
+Scimitar,martial,melee,25 gp,slashing,1d6,3 lb.,"Finesse, light"
+Shortsword,martial,melee,10 gp,piercing,1d6,2 lb.,"Finesse, light"
+Trident,martial,melee,5 gp,piercing,1d6,4 lb.,"Thrown (range 20/60), versatile (1d8)"
+War Pick,martial,melee,5 gp,piercing,1d8,2 lb.,
+Warhammer,martial,melee,15 gp,bludgeoning,1d8,2 lb.,Versatile (1d10)
+Whip,martial,melee,2 gp,slashing,1d4,3 lb.,"Finesse, reach"
+Blowgun,martial,ranged,10 gp,piercing,1,1 lb.,"Ammunition (range 25/100), loading"
+Hand Crossbow,martial,ranged,75 gp,piercing,1d6,3 lb.,"Ammunition (range 30/120), light, loading"
+Heavy Crossbow,martial,ranged,50 gp,piercing,1d10,18 lb.,"Ammunition (range 100/400), heavy, loading, two-handed"
+Longbow,martial,ranged,50 gp,piercing,1d8,2 lb.,"Ammunition (range 150/600), heavy, two-handed"

@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3214ea03-43de-49b5-9fe5-427b8f21a3fc" name="Default Changelist" comment="" />
+    <list default="true" id="3214ea03-43de-49b5-9fe5-427b8f21a3fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Base_WeaponsList.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PlayerCharacter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csv_importer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapon.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roll-crit_hits_revisited.py" beforeDir="false" afterPath="$PROJECT_DIR$/roll-crit_hits_revisited.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1g9o0tF5E8PXyDD3V516clYdyld" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -15,7 +37,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/../utils" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.roll-crit_hits_revisited">
     <configuration name="Python3.8" type="PythonConfigurationType" factoryName="Python">
@@ -60,7 +89,49 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="roll-crit_hits_revisited" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="p3" type="PythonConfigurationType" factoryName="Python">
+      <module name="rpg" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/Library/Frameworks/Python.framework/Versions/3.9/bin/python3.9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="passwordgana (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="rpg" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/utils/passwordgana.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="passwordgana" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="rpg" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -70,6 +141,27 @@
       <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/passwordgana.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="roll-crit_hits_revisited" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="rpg" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/roll-crit_hits_revisited.py" />
@@ -83,11 +175,16 @@
     </configuration>
     <list>
       <item itemvalue="Python.Python3.8" />
+      <item itemvalue="Python.p3" />
+      <item itemvalue="Python.passwordgana (1)" />
+      <item itemvalue="Python.passwordgana" />
       <item itemvalue="Python.roll-crit_hits_revisited" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.roll-crit_hits_revisited" />
+        <item itemvalue="Python.passwordgana (1)" />
+        <item itemvalue="Python.passwordgana" />
       </list>
     </recent_temporary>
   </component>
@@ -103,53 +200,49 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="417" y="213" key="#Inspections" timestamp="1597536345480">
+    <state x="247" y="188" width="1075" height="862" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605926759395">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="417" y="213" key="#Inspections/0.23.1680.1027@0.23.1680.1027" timestamp="1597536345480" />
-    <state x="493" y="358" key="#Notifications" timestamp="1597536243530">
+    <state x="247" y="188" width="1075" height="862" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1605926759395" />
+    <state x="559" y="391" key="FileChooserDialogImpl" timestamp="1605926645092">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="493" y="358" key="#Notifications/0.23.1680.1027@0.23.1680.1027" timestamp="1597536243530" />
-    <state x="247" y="189" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597536613947">
+    <state x="559" y="391" key="FileChooserDialogImpl/0.23.1680.1027@0.23.1680.1027" timestamp="1605926645092" />
+    <state width="1377" height="276" key="GridCell.Tab.0.bottom" timestamp="1606519991963">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="247" y="189" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597536613947" />
-    <state width="1379" height="338" key="GridCell.Tab.0.bottom" timestamp="1597765859171">
+    <state width="1377" height="276" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1603405836368" />
+    <state width="1377" height="276" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1606519991963" />
+    <state width="1377" height="276" key="GridCell.Tab.0.bottom/1680.-817.3360.1867/0.23.1680.1027@0.23.1680.1027" timestamp="1603162015733" />
+    <state width="1379" height="274" key="GridCell.Tab.0.bottom/1680.-886.3360.1867/0.23.1680.1027@0.23.1680.1027" timestamp="1598070102330" />
+    <state width="1377" height="276" key="GridCell.Tab.0.center" timestamp="1606519991963">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1379" height="338" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859171" />
-    <state width="1379" height="338" key="GridCell.Tab.0.center" timestamp="1597765859170">
+    <state width="1377" height="276" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1603405836368" />
+    <state width="1377" height="276" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1606519991963" />
+    <state width="1377" height="276" key="GridCell.Tab.0.center/1680.-817.3360.1867/0.23.1680.1027@0.23.1680.1027" timestamp="1603162015732" />
+    <state width="1379" height="274" key="GridCell.Tab.0.center/1680.-886.3360.1867/0.23.1680.1027@0.23.1680.1027" timestamp="1598070102329" />
+    <state width="1377" height="276" key="GridCell.Tab.0.left" timestamp="1606519991962">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1379" height="338" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859170" />
-    <state width="1379" height="338" key="GridCell.Tab.0.left" timestamp="1597765859170">
+    <state width="1377" height="276" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1603405836367" />
+    <state width="1377" height="276" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1606519991962" />
+    <state width="1377" height="276" key="GridCell.Tab.0.left/1680.-817.3360.1867/0.23.1680.1027@0.23.1680.1027" timestamp="1603162015731" />
+    <state width="1379" height="274" key="GridCell.Tab.0.left/1680.-886.3360.1867/0.23.1680.1027@0.23.1680.1027" timestamp="1598070102329" />
+    <state width="1377" height="276" key="GridCell.Tab.0.right" timestamp="1606519991963">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1379" height="338" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859170" />
-    <state width="1379" height="338" key="GridCell.Tab.0.right" timestamp="1597765859170">
+    <state width="1377" height="276" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1603405836368" />
+    <state width="1377" height="276" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1606519991963" />
+    <state width="1377" height="276" key="GridCell.Tab.0.right/1680.-817.3360.1867/0.23.1680.1027@0.23.1680.1027" timestamp="1603162015732" />
+    <state width="1379" height="274" key="GridCell.Tab.0.right/1680.-886.3360.1867/0.23.1680.1027@0.23.1680.1027" timestamp="1598070102330" />
+    <state x="303" y="269" key="SettingsEditor" timestamp="1605926671003">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1379" height="338" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859170" />
-    <state width="1379" height="338" key="GridCell.Tab.1.bottom" timestamp="1597765859172">
+    <state x="303" y="269" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1605926671003" />
+    <state x="737" y="248" width="670" height="676" key="search.everywhere.popup" timestamp="1606177395650">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1379" height="338" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859172" />
-    <state width="1379" height="338" key="GridCell.Tab.1.center" timestamp="1597765859171">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1379" height="338" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859171" />
-    <state width="1379" height="338" key="GridCell.Tab.1.left" timestamp="1597765859171">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1379" height="338" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859171" />
-    <state width="1379" height="338" key="GridCell.Tab.1.right" timestamp="1597765859171">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1379" height="338" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597765859171" />
-    <state x="284" y="166" key="SettingsEditor" timestamp="1597536492730">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="284" y="166" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597536492730" />
+    <state x="737" y="248" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1606177395650" />
   </component>
 </project>

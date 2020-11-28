@@ -1,0 +1,1442 @@
+{
+  "unarmed strike": {
+	"regExpSearch": "(fist|arm|leg|foot|claw|talon)s?|feet|^(?=.*unarmed)(?=.*strike).*$|^(?=.*martial)(?=.*arts).*$|^(?=.*tavern)(?=.*brawler).*$",
+	"name": "Unarmed strike",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"ability": 1,
+	"type": "Natural",
+	"damage": [
+	  1,
+	  "",
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"description": "",
+	"monkweapon": true,
+	"abilitytodamage": true
+  },
+  "club": {
+	"regExpSearch": "^(?!.*(great|heavy|big))(?=.*(club|bian|tonfa)s?).*$",
+	"name": "Club",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  4,
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"weight": 2,
+	"description": "Light",
+	"abilitytodamage": true,
+	"monkweapon": true
+  },
+  "dagger": {
+	"regExpSearch": "dagger|bishou|tamos?|kozuka|tantos?",
+	"name": "Dagger",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  4,
+	  "piercing"
+	],
+	"range": "Melee, 20/60 ft",
+	"weight": 1,
+	"description": "Finesse, light, thrown",
+	"abilitytodamage": true,
+	"monkweapon": true
+  },
+  "greatclub": {
+	"regExpSearch": "^(?=.*(great|heavy|big|weida))(?=.*(club|bian|tonfa)s?).*$|tetsubo",
+	"name": "Greatclub",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  8,
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"weight": 10,
+	"description": "Two-handed",
+	"abilitytodamage": true
+  },
+  "handaxe": {
+	"regExpSearch": "^(?=.*(light|hand|short|small|throw))(?=.*(axe|\\bfu)s?\\b).*$|\\bonos?\\b",
+	"name": "Handaxe",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  6,
+	  "slashing"
+	],
+	"range": "Melee, 20/60 ft",
+	"weight": 2,
+	"description": "Light, thrown",
+	"abilitytodamage": true,
+	"monkweapon": true
+  },
+  "javelin": {
+	"regExpSearch": "javelin,|\\bmaus?\\b|uchi-ne",
+	"name": "Javelin",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  6,
+	  "piercing"
+	],
+	"range": "Melee, 30/120 ft",
+	"weight": 2,
+	"description": "Thrown",
+	"abilitytodamage": true,
+	"monkweapon": true
+  },
+  "light hammer": {
+	"regExpSearch": "^(?=.*(light|hand|short|small|throw))(?=.*hammer).*$",
+	"name": "Light hammer",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  4,
+	  "bludgeoning"
+	],
+	"range": "Melee, 20/60 ft",
+	"weight": 2,
+	"description": "Light, thrown",
+	"abilitytodamage": true,
+	"monkweapon": true
+  },
+  "mace": {
+	"regExpSearch": "maces,?\\b|\\bchuis?\\b|kanabo",
+	"name": "Mace",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  6,
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"weight": 4,
+	"description": "",
+	"monkweapon": true,
+	"abilitytodamage": true
+  },
+  "quarterstaff": {
+	"regExpSearch": "quarterstaff|\\bstaffs?\\b|\\bbos?\\b",
+	"name": "Quarterstaff",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  6,
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"weight": 4,
+	"description": "Versatile (1d8)",
+	"monkweapon": true,
+	"abilitytodamage": true
+  },
+  "sickle": {
+	"regExpSearch": "sickle,|\\bkamas?\\b",
+	"name": "Sickle",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  4,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 2,
+	"description": "Light",
+	"monkweapon": true,
+	"abilitytodamage": true
+  },
+  "spear": {
+	"regExpSearch": "^(?!.*agonizing)(?!.*eldritch)(?=.*(spears?|qiang|\\byaris?)).*$",
+	"name": "Spear",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  6,
+	  "piercing"
+	],
+	"range": "Melee, 20/60 ft",
+	"weight": 3,
+	"description": "Thrown, versatile (1d8)",
+	"monkweapon": true,
+	"abilitytodamage": true
+  },
+  "light crossbow": {
+	"regExpSearch": "^(((,?=.*light)(?=.*crossbow))|((?!.*(hand|short|great|heavy|bolt))(?=.*\\bcrossbows?\\b))).*$",
+	"name": "Light Crossbow",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  8,
+	  "piercing"
+	],
+	"range": "80/320 ft",
+	"weight": 5,
+	"description": "Ammunition, loading, two-handed",
+	"abilitytodamage": true,
+	"ammo": "bolt"
+  },
+  "dart": {
+	"regExpSearch": "dart|shuriken",
+	"name": "Dart",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  4,
+	  "piercing"
+	],
+	"range": "20/60 ft",
+	"weight": 0.25,
+	"description": "Finesse, thrown",
+	"abilitytodamage": true
+  },
+  "shortbow": {
+	"regExpSearch": "^(,?!.*crossbow)(((?=.*short)(?=.*bow))|((?!.*(moon|long))(?=.*\\bbows?\\b))).*$|hankyus?",
+	"name": "Shortbow",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  6,
+	  "piercing"
+	],
+	"range": "80/320 ft",
+	"weight": 2,
+	"description": "Ammunition, two-handed",
+	"abilitytodamage": true,
+	"ammo": "arrow"
+  },
+  "sling": {
+	"regExpSearch": "sling",
+	"name": "Sling",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  4,
+	  "bludgeoning"
+	],
+	"range": "30/120 ft",
+	"weight": 0.001,
+	"description": "Ammunition",
+	"abilitytodamage": true,
+	"ammo": "bullet"
+  },
+  "battleaxe": {
+	"regExpSearch": "^(((,?=.*battle)(?=.*(axe|\\bono|\\bfu)s?\\b))|((?!.*(light|hand|short|small|great|heavy|throw))(?=.*\\b(axe|fu|masakari)s?\\b))).*$",
+	"name": "Battleaxe",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  8,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 4,
+	"description": "Versatile (1d10)",
+	"abilitytodamage": true
+  },
+  "flail": {
+	"regExpSearch": "flail|nunchaku",
+	"name": "Flail",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  8,
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"weight": 2,
+	"description": "",
+	"abilitytodamage": true
+  },
+  "glaive": {
+	"regExpSearch": "glaive|guandao|bisento|naginata",
+	"name": "Glaive",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  10,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 6,
+	"description": "Heavy, reach, two-handed",
+	"abilitytodamage": true
+  },
+  "greataxe": {
+	"regExpSearch": "^(,?=.*(great|heavy|weida))(?=.*(axe|\\bono|\\bfu|masakari)s?\\b).*$",
+	"name": "Greataxe",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  12,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 7,
+	"description": "Heavy, two-handed",
+	"abilitytodamage": true
+  },
+  "greatsword": {
+	"regExpSearch": "^(?=.*(great|heavy))(?=.*sword).*$|changdao|nodachi",
+	"name": "Greatsword",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  2,
+	  6,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 6,
+	"description": "Heavy, two-handed",
+	"abilitytodamage": true
+  },
+  "halberd": {
+	"regExpSearch": "halberd,|\\bjis?\\b|kamayari",
+	"name": "Halberd",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  10,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 6,
+	"description": "Heavy, reach, two-handed",
+	"abilitytodamage": true
+  },
+  "lance": {
+	"regExpSearch": "lance|umayari",
+	"name": "Lance",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  12,
+	  "piercing"
+	],
+	"range": "Melee",
+	"weight": 6,
+	"description": "Reach, disadvantage to attack within 5 ft, two-handed when not mounted",
+	"abilitytodamage": true
+  },
+  "longsword": {
+	"regExpSearch": "katana|\bjians?\b|^(((?=.*long)(?=.*sword))|((?!,?.*(burst|light|hand|short|small|great|heavy))(?=.*\bswords?\b))).*$",
+	"name": "Longsword",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  8,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 3,
+	"description": "Versatile (1d10)",
+	"abilitytodamage": true
+  },
+  "maul": {
+	"regExpSearch": "^((?=.*maul)|((?=.*(great|heavy))(?=.*hammer))).*$",
+	"name": "Maul",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  2,
+	  6,
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"weight": 10,
+	"description": "Heavy, two-handed",
+	"abilitytodamage": true
+  },
+  "morningstar": {
+	"regExpSearch": "morningstar",
+	"name": "Morningstar",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  8,
+	  "piercing"
+	],
+	"range": "Melee",
+	"weight": 4,
+	"description": "",
+	"abilitytodamage": true
+  },
+  "pike": {
+	"regExpSearch": "^(,?!.*armou?r)(?!.*\\bspike)(?=.*(pike|\\bmaos?\\b|nagaeyari)).*$",
+	"name": "Pike",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  10,
+	  "piercing"
+	],
+	"range": "Melee",
+	"weight": 18,
+	"description": "Heavy, reach, two-handed",
+	"abilitytodamage": true
+  },
+  "rapier": {
+	"regExpSearch": "rapier",
+	"name": "Rapier",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  8,
+	  "piercing"
+	],
+	"range": "Melee",
+	"weight": 2,
+	"description": "Finesse",
+	"abilitytodamage": true
+  },
+  "scimitar": {
+	"regExpSearch": "scimitar|liuyedao|wakizashi",
+	"name": "Scimitar",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  6,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 3,
+	"description": "Finesse, light",
+	"abilitytodamage": true
+  },
+  "shortsword": {
+	"regExpSearch": "^(?=,?.*short)(?=.*sword).*$|shuangdao",
+	"name": "Shortsword",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  6,
+	  "piercing"
+	],
+	"range": "Melee",
+	"weight": 2,
+	"description": "Finesse, light",
+	"abilitytodamage": true,
+	"monkweapon": true
+  },
+  "trident": {
+	"regExpSearch": "trident,|\bchas?\b|magariyari",
+	"name": "Trident",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  6,
+	  "piercing"
+	],
+	"range": "Melee, 20/60 ft",
+	"weight": 4,
+	"description": "Thrown, versatile (1d8)",
+	"abilitytodamage": true
+  },
+  "war pick": {
+	"regExpSearch": "^(((?=,?.*pick)(?=.*war))|((?!.*(heavy|great|light))(?=.*\bpicks?\b))).*$|\bkuwas?\b",
+	"name": "War pick",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  8,
+	  "piercing"
+	],
+	"range": "Melee",
+	"weight": 2,
+	"description": "",
+	"abilitytodamage": true
+  },
+  "warhammer": {
+	"regExpSearch": "^(((,?=.*hammer)(?=.*war))|((?!.*(light|hand|short|small|great|heavy|throw|maul))(?=.*\\bhammers?\\b))).*$",
+	"name": "Warhammer",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  8,
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"weight": 2,
+	"description": "Versatile (1d10)",
+	"abilitytodamage": true
+  },
+  "whip": {
+	"regExpSearch": "^(?!,?.*thorn)(?=.*whip).*$",
+	"name": "Whip",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "melee",
+	"ability": 1,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  4,
+	  "slashing"
+	],
+	"range": "Melee",
+	"weight": 3,
+	"description": "Finesse, reach",
+	"abilitytodamage": true
+  },
+  "blowgun": {
+	"regExpSearch": "blowgun",
+	"name": "Blowgun",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  "",
+	  "piercing"
+	],
+	"range": "25/100 ft",
+	"weight": 1,
+	"description": "Ammunition, loading",
+	"abilitytodamage": true,
+	"ammo": "needle"
+  },
+  "hand crossbow": {
+	"regExpSearch": "^(?=,?.*hand)(?=.*crossbow).*$",
+	"name": "Hand Crossbow",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  6,
+	  "piercing"
+	],
+	"range": "30/120 ft",
+	"weight": 3,
+	"description": "Ammunition, light, loading",
+	"abilitytodamage": true,
+	"ammo": "bolt"
+  },
+  "heavy crossbow": {
+	"regExpSearch": "^(?=,?.*(great|heavy))(?=.*crossbow).*$",
+	"name": "Heavy Crossbow",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  10,
+	  "piercing"
+	],
+	"range": "100/400 ft",
+	"weight": 18,
+	"description": "Ammunition, heavy, loading, two-handed",
+	"abilitytodamage": true,
+	"ammo": "bolt"
+  },
+  "longbow": {
+	"regExpSearch": "^(?!,?.*crossbow)(?=.*long)(?=.*bow).*$|daikyu",
+	"name": "Longbow",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Martial",
+	"damage": [
+	  1,
+	  8,
+	  "piercing"
+	],
+	"range": "150/600 ft",
+	"weight": 2,
+	"description": "Ammunition, heavy, two-handed",
+	"abilitytodamage": true,
+	"ammo": "arrow"
+  },
+  "net": {
+	"regExpSearch": ",\\bnet(ting)?s?\\b",
+	"name": "Net",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		149
+	  ]
+	],
+	"list": "ranged",
+	"ability": 2,
+	"type": "Martial",
+	"damage": [
+	  "\u2015",
+	  "",
+	  "Restrained"
+	],
+	"range": "5/15 ft",
+	"weight": 3,
+	"description": "Thrown, only 1 attack, up to large creature hit is restrained (PHB 148)",
+	"abilitytodamage": false
+  },
+  "improvised weapon": {
+	"regExpSearch": "improvised",
+	"name": "Improvised weapon",
+	"source": [
+	  [
+		"SRD",
+		65
+	  ],
+	  [
+		"P",
+		147
+	  ]
+	],
+	"ability": 1,
+	"type": "Improvised Weapons",
+	"damage": [
+	  1,
+	  4,
+	  "bludgeoning"
+	],
+	"range": "Melee, 20/60 ft",
+	"description": "Damage die, type, range, etc. are at the DM's discretion",
+	"abilitytodamage": true
+  },
+  "alchemist fire": {
+	"regExpSearch": "^(?=,?.*alchemist)(?=.*fire).*$",
+	"name": "Alchemist's Fire",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		148
+	  ]
+	],
+	"list": "improvised",
+	"ability": 2,
+	"type": "Improvised Weapons",
+	"damage": [
+	  1,
+	  4,
+	  "fire"
+	],
+	"range": "20 ft",
+	"weight": 1,
+	"description": "Target +1d4 damage at the start of each of its turn; Can end it as an action with a DC 10 Dex check",
+	"abilitytodamage": false,
+	"ammo": "alchemist fire"
+  },
+  "vials of acid": {
+	"regExpSearch": "^(?=,?.*vial)(?=.*acid).*$",
+	"name": "Vial of Acid",
+	"source": [
+	  [
+		"SRD",
+		66
+	  ],
+	  [
+		"P",
+		148
+	  ]
+	],
+	"list": "improvised",
+	"ability": 2,
+	"type": "Improvised Weapons",
+	"damage": [
+	  2,
+	  6,
+	  "acid"
+	],
+	"range": "20 ft",
+	"weight": 1,
+	"description": "",
+	"abilitytodamage": false,
+	"ammo": "vials of acid"
+  },
+  "holy water": {
+	"regExpSearch": "^(?=,?.*holy)(?=.*water).*$",
+	"name": "Holy Water",
+	"source": [
+	  [
+		"SRD",
+		67
+	  ],
+	  [
+		"P",
+		151
+	  ]
+	],
+	"list": "improvised",
+	"ability": 2,
+	"type": "Improvised Weapons",
+	"damage": [
+	  2,
+	  6,
+	  "radiant"
+	],
+	"range": "20 ft",
+	"weight": 1,
+	"description": "Only does damage against fiends and undead; Comes in flasks",
+	"abilitytodamage": false,
+	"ammo": "holy water"
+  },
+  "burning torch": {
+	"regExpSearch": "^(?=,?.*torch)(?=.*burning).*$",
+	"name": "Torch, Burning",
+	"source": [
+	  [
+		"SRD",
+		68
+	  ],
+	  [
+		"P",
+		153
+	  ]
+	],
+	"list": "improvised",
+	"ability": 1,
+	"type": "Improvised Weapons",
+	"damage": [
+	  1,
+	  "",
+	  "fire"
+	],
+	"range": "Melee",
+	"weight": 1,
+	"description": "Only does damage while burning",
+	"abilitytodamage": false
+  },
+  "spell attack": {
+	"regExpSearch": "^(?=,?.*spell)(?=.*attack).*$",
+	"name": "Spell attack",
+	"source": [
+	  [
+		"SRD",
+		103
+	  ],
+	  [
+		"P",
+		205
+	  ]
+	],
+	"ability": 0,
+	"type": "Spell",
+	"damage": [
+	  "",
+	  "",
+	  ""
+	],
+	"range": "",
+	"description": "",
+	"abilitytodamage": false
+  },
+  "acid splash": {
+	"regExpSearch": "^(?=,?.*acid)(?=.*splash).*$",
+	"name": "Acid Splash",
+	"source": [
+	  [
+		"SRD",
+		114
+	  ],
+	  [
+		"P",
+		211
+	  ]
+	],
+	"list": "spell",
+	"ability": 4,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  6,
+	  "acid"
+	],
+	"range": "60 ft",
+	"description": "Dex save, success - no damage; 1 or 2 creatures within 5 ft of each other (PHB 211)",
+	"abilitytodamage": false,
+	"dc": true
+  },
+  "chill touch": {
+	"regExpSearch": "^(?=,?.*chill)(?=.*touch).*$",
+	"name": "Chill Touch",
+	"source": [
+	  [
+		"SRD",
+		124
+	  ],
+	  [
+		"P",
+		221
+	  ]
+	],
+	"list": "spell",
+	"ability": 6,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  8,
+	  "necrotic"
+	],
+	"range": "120 ft",
+	"description": "Target can't regain HP; Undead dis. on attacks vs. me until my next turn (PHB 221)",
+	"abilitytodamage": false
+  },
+  "eldritch blast": {
+	"regExpSearch": "(agonizing|eldritch|repelling).+(spear|blast)",
+	"name": "Eldritch Blast",
+	"source": [
+	  [
+		"SRD",
+		139
+	  ],
+	  [
+		"P",
+		237
+	  ]
+	],
+	"list": "spell",
+	"ability": 6,
+	"type": "Cantrip",
+	"damage": [
+	  1,
+	  10,
+	  "force"
+	],
+	"range": "120 ft",
+	"description": "Each d10 is a separate beam requiring separate rolls (PHB 237)",
+	"abilitytodamage": false
+  },
+  "fire bolt": {
+	"regExpSearch": "^(?=,?.*fire)(?=.*bolt).*$",
+	"name": "Fire Bolt",
+	"source": [
+	  [
+		"SRD",
+		144
+	  ],
+	  [
+		"P",
+		241
+	  ]
+	],
+	"list": "spell",
+	"ability": 6,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  10,
+	  "fire"
+	],
+	"range": "120 ft",
+	"description": "Unattended flammable objects ignite (PHB 241)",
+	"abilitytodamage": false
+  },
+  "poison spray": {
+	"regExpSearch": "^(?=,?.*poison)(?=.*spray).*$",
+	"name": "Poison Spray",
+	"source": [
+	  [
+		"SRD",
+		169
+	  ],
+	  [
+		"P",
+		266
+	  ]
+	],
+	"list": "spell",
+	"ability": 6,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  12,
+	  "poison"
+	],
+	"range": "10 ft",
+	"description": "Con save, success - no damage; 1 creature (PHB 266)",
+	"abilitytodamage": false,
+	"dc": true
+  },
+  "produce flame": {
+	"regExpSearch": "^(?=,?.*produce)(?=.*flame).*$",
+	"name": "Produce Flame",
+	"source": [
+	  [
+		"SRD",
+		172
+	  ],
+	  [
+		"P",
+		269
+	  ]
+	],
+	"list": "spell",
+	"ability": 5,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  8,
+	  "fire"
+	],
+	"range": "30 ft",
+	"description": "10-ft radius bright light and 10-ft radius dim light until thrown (PHB 269)",
+	"abilitytodamage": false
+  },
+  "ray of frost": {
+	"regExpSearch": "^(?=,?=.*ray)(?=.*frost).*$",
+	"name": "Ray of Frost",
+	"source": [
+	  [
+		"SRD",
+		174
+	  ],
+	  [
+		"P",
+		271
+	  ]
+	],
+	"list": "spell",
+	"ability": 6,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  8,
+	  "cold"
+	],
+	"range": "60 ft",
+	"description": "Target -10 ft speed until start of my next turn (PHB 271)",
+	"abilitytodamage": false
+  },
+  "sacred flame": {
+	"regExpSearch": "^(?=,?.*sacred)(?=.*flame).*$",
+	"name": "Sacred Flame",
+	"source": [
+	  [
+		"SRD",
+		176
+	  ],
+	  [
+		"P",
+		272
+	  ]
+	],
+	"list": "spell",
+	"ability": 5,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  8,
+	  "radiant"
+	],
+	"range": "60 ft",
+	"description": "Dex save, no bonus from cover, success - no damage; 1 creature (PHB 272)",
+	"abilitytodamage": false,
+	"dc": true
+  },
+  "shillelagh": {
+	"baseWeapon": "quarterstaff",
+	"regExpSearch": "shillelagh",
+	"name": "Shillelagh",
+	"source": [
+	  [
+		"SRD",
+		179
+	  ],
+	  [
+		"P",
+		275
+	  ]
+	],
+	"list": "spell",
+	"ability": 5,
+	"type": "Simple",
+	"damage": [
+	  1,
+	  8,
+	  "bludgeoning"
+	],
+	"range": "Melee",
+	"description": "Imbued club or quarterstaff; Counts as a magical weapon (PHB 275)",
+	"monkweapon": true,
+	"abilitytodamage": true
+  },
+  "shocking grasp": {
+	"regExpSearch": "^(?=,?.*shocking)(?=.*grasp).*$",
+	"name": "Shocking Grasp",
+	"source": [
+	  [
+		"SRD",
+		179
+	  ],
+	  [
+		"P",
+		275
+	  ]
+	],
+	"list": "spell",
+	"ability": 6,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  8,
+	  "lightning"
+	],
+	"range": "Melee",
+	"description": "Advantage if target is wearing metal armor, target cannot take reactions until its next turn (PHB 275)",
+	"abilitytodamage": false
+  },
+  "vicious mockery": {
+	"regExpSearch": "^(?=,?.*vicious)(?=.*mockery).*$",
+	"name": "Vicious Mockery",
+	"source": [
+	  [
+		"SRD",
+		189
+	  ],
+	  [
+		"P",
+		285
+	  ]
+	],
+	"list": "spell",
+	"ability": 6,
+	"type": "Cantrip",
+	"damage": [
+	  "C",
+	  4,
+	  "psychic"
+	],
+	"range": "60 ft",
+	"description": "Wis save, success - no damage, fail - also disadv. on next attack roll in next turn; 1 creature (PHB 285)",
+	"abilitytodamage": false,
+	"dc": true
+  }
+}
