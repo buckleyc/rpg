@@ -12,7 +12,21 @@ class PC:
 				 cstr=8, cdex=8, ccon=8, cint=8, cwis=8, ccha=8,
 				 ac=8, hp=1, proficiency=None):
 		if proficiency is None:
-			self.proficiency = {}
+			self.proficiency = {
+				'skill': {},
+				'armour': {},
+				'weapon': {},
+				'save': {},
+				'resistance': {},
+				'language': {},
+				'tool': {},
+				'savetxt': {},
+				'vision': {},
+				'speed': {},
+				'specialarmour': {},
+				'carryingcapacity': {},
+				'advantage': {}
+			}
 		self.name = name
 		self.cclass = cclass
 		self.race = race
