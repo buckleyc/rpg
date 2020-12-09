@@ -31,6 +31,7 @@ class PC:
 		self.cclass = cclass
 		self.race = race
 		self.background = background
+		self.specialty = ""
 		self.level = level
 		self.cstr = cstr
 		self.cdex = cdex
@@ -52,13 +53,13 @@ class PC:
 
 
 	def __str__(self):
-		# return str(self.__class__) + ": " + str(self.__dict__)
-		return f"{self.name} is a {self.cclass} {self.race} that has a background as a {self.background} {self.specialty if self.specialty else ''}."
+		def ordinal(n) -> str:
+			return f"{n}{'tsnrhtdd'[(n / 10 % 10 != 1) * (n % 10 < 4) * n % 10:: 4]}"
+		return f"{self.name}, the {ordinal(self.level)} level {self.race}, with experience as {self.cclass} and a background as a {self.background} {self.specialty if self.specialty else ''}."
 
 
 	def __repr__(self):
 		return str(self.__class__) + ": " + str(self.__dict__)
-
 
 	def attack_bonus(self, weapon) -> str:
 		# What is the attacker's ATTACK Bonus for this weapon?
