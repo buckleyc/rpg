@@ -51,13 +51,14 @@ class PC:
 		self.crits_revisited = False
 
 
-
 	def __str__(self):
+		# return str(self.__class__) + ": " + str(self.__dict__)
+		return f"{self.name} is a {self.cclass} {self.race} that has a background as a {self.background} {self.specialty if self.specialty else ''}."
+
+
+	def __repr__(self):
 		return str(self.__class__) + ": " + str(self.__dict__)
 
-	# Properties:
-	# ammunition, finesse, heavy, light, loading, range, reach,
-	# special, thrown, two-handed, versatile, improvised, silvered
 
 	def attack_bonus(self, weapon) -> str:
 		# What is the attacker's ATTACK Bonus for this weapon?
