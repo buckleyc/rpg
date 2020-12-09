@@ -10,6 +10,7 @@ from __future__ import unicode_literals
 
 import sys
 import logging
+import inspect
 import csv
 import random
 import re
@@ -29,13 +30,13 @@ __author__ = "Buckley Collum"
 __copyright__ = "Copyright 2020, QuoinWorks"
 __credits__ = ["Buckley Collum"]
 __license__ = "GNU General Public License v3.0"
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 __maintainer__ = "Buckley Collum"
 __email__ = "buckleycollum@gmail.com"
 __status__ = "Dev"
 
 
-default_loglevel = 'info'
+default_loglevel = 'warning'
 
 
 class Color:
@@ -768,7 +769,7 @@ def weapon_attack(
 		attack_result_str = " + ".join([str(d20roll.total), attackbonus])
 		attack_result = d20.roll(f"{attack_result_str}")
 		print(
-			f"{attack_roll_str} + {attackbonus} = {attack_result_str} = {Color.YELLOW}{attack_result.total}{Color.ENDC}."
+			f"{attack_roll_str} + {attackbonus} = {attack_result_str.replace(' ', '')} = {Color.YELLOW}{attack_result.total}{Color.ENDC}."
 		)
 		hitanddamage(attacker, weapon, target)
 
@@ -782,6 +783,8 @@ def critical_miss(weapon=None):
 
 	def indent(my_paragraph) -> str:
 		return f"\t{my_paragraph}"
+
+	print(f"Critical fail roll for d100 is {roll(100)}")  # for David Gavrin's table
 
 	mymiss = roll(20)
 	if mymiss == 1:
@@ -868,11 +871,9 @@ def criticalhit(attacker, weapon, target=None, *, outside_roll=0):
 		# Roll for Criticals Revisited lookup, if value not specified
 		my_crit_roll = d20.roll("1d20").total if not outside_roll else outside_roll
 		primary_damage_type = weapon.damage[0][2]
-		title, value, effect, also = damages[primary_damage_type][
-			rollmatch[my_crit_roll]
-		]
+		title, value, effect, also = damages[primary_damage_type][rollmatch[my_crit_roll]]
 		print(f"\tThe d20 roll for Crits Revisited is {my_crit_roll}")
-		# print(damages[weapon.damage[0][2]][rollmatch[my_crit_roll]])
+		logging.debug(damages[weapon.damage[0][2]][rollmatch[my_crit_roll]])
 
 		# add icons to damage type
 		new_dmg = []
@@ -880,8 +881,8 @@ def criticalhit(attacker, weapon, target=None, *, outside_roll=0):
 			n, s, t = d
 			t += dmg_icon(t)
 			new_dmg.append([n, s, t.title()])
-		# print(new_dmg)
 		weapon.damage = new_dmg
+		logging.debug(weapon.damage)
 
 		dice_roll_str = crits_revisited_hp(weapon, value)
 
@@ -938,29 +939,42 @@ def criticalhit(attacker, weapon, target=None, *, outside_roll=0):
 
 def crits_revisited_hp(weapon, value) -> str:
 	"""return string for crit revisited damage"""
-	primary_damage_sides = str(weapon.damage[0][1])
-	# print(primary_damage_sides, weapon.dice_roll_str)
+	func = inspect.currentframe().f_code
+	# FORMAT = "[ • %(funcName)20s() ] %(message)s"
+	# logging.basicConfig(format=FORMAT)
+	# logging.debug("%s", func.co_name)
 	critdamage = []
-	if value == 1:
-		critdamage.append(weapon.dice_roll_str)
-	elif value == 2:
-		critdamage.append(primary_damage_sides)
-	elif value == 3:
-		# Double the number of dice rolled; e.g. change '2d6' to '4d6'
-		critdamage.append(
-			re.sub(
-				"(\\d+)d",
-				lambda m: str(int(m.groups()[0]) * 2) + "d",
-				weapon.dice_roll_str,
+	for die in weapon.damage:
+		# logging.debug("Die = %s", str(die))
+		quantity, sides, damage_type = die
+		if value == 1:
+			logging.debug('%s(): regular roll', func.co_name)
+			critdamage.append(die_roll_str(die))
+		elif value == 2:
+			logging.debug('%s(): maximum regular roll', func.co_name)
+			critdamage.append(str(sides))
+		elif value == 3:
+			logging.debug('%s(): double the rolls', func.co_name)
+			# Double the number of dice rolled; e.g. change '2d6' to '4d6'
+			critdamage.append(
+				re.sub(
+					"(\\d+)d",
+					lambda m: str(int(m.groups()[0]) * 2) + "d",
+					die_roll_str(die),
+				)
 			)
-		)
-	elif value == 4:
-		critdamage.append(primary_damage_sides)
-		critdamage.append(weapon.dice_roll_str)
-	elif value == 5:
-		critdamage.append(primary_damage_sides)
-		critdamage.append(primary_damage_sides)
+		elif value == 4:
+			logging.debug('%s(): maximum + roll', func.co_name)
+			critdamage.append(str(sides))
+			critdamage.append(die_roll_str(die))
+		elif value == 5:
+			logging.debug('%s(): double maximum', func.co_name)
+			# print([str(sides)] * (2 * quantity))
+			# critdamage.extend([str(sides)] * (2 * quantity))
+			critdamage.extend([f"{2 * quantity}*{str(sides)}"])
+
 	# print(f"{value} and {critdamage}")
+	logging.debug("crit damage revisited = %s", str(critdamage))
 	return "+".join(critdamage)
 
 
@@ -1042,7 +1056,7 @@ def mypc(shortname="Malorin"):
 	try:
 		# Select PC history
 		sqlite_select_query = f"SELECT PCID, Level, Race, Background, Specialty FROM pc WHERE ShortName='{shortname}';"
-		logging.debug(sqlite_select_query)
+		# logging.debug(sqlite_select_query)
 		c.execute(sqlite_select_query)
 		try:
 			result = c.execute(sqlite_select_query).fetchone()
@@ -1109,10 +1123,11 @@ def mypc(shortname="Malorin"):
 
 
 def load_weapons(handle=None):
+	import os
 	import json
 	import re
 	from pathlib import Path
-	data_folder = None
+	data_folder = os.path.dirname(__file__)
 	data_folder = Path(data_folder or Path.cwd())
 	weapons_json_file = data_folder / r"Base_WeaponsList.json"
 	with open(weapons_json_file, "r") as dataFile:
@@ -1215,11 +1230,13 @@ def setup_logging(verbosity=0):
 	import os
 	import logging
 
-	logging.debug(os.getenv('LOGLEVEL', 'WARNING').upper())
 	base_loglevel = getattr(logging, (os.getenv("LOGLEVEL", default_loglevel)).upper())
+	# print(base_loglevel)
 	verbosity = min(verbosity, 2)
 	loglevel = base_loglevel - (verbosity * 10)
+	# print(loglevel)
 	logging.basicConfig(level=loglevel, format=" • %(message)s")
+	# logging.info(os.getenv('LOGLEVEL', default_loglevel).upper())
 
 
 def parse_args():
@@ -1228,9 +1245,27 @@ def parse_args():
 	parser = argparse.ArgumentParser(
 		description="RPG PC and Weapon roller."
 	)
+	parser.add_argument(
+		"-v",
+		"--verbose",
+		dest="verbosity",
+		action="count",
+		default=0,
+		help="verbose output (repeat for increased verbosity)",
+	)
+	parser.add_argument(
+		"--adv",
+		action='store_true',
+		help="has Advantage"
+	)
+	parser.add_argument(
+		"--dis",
+		action='store_true',
+		help="has Disadvantage"
+	)
 	args = parser.parse_args()
 
-	setup_logging()
+	setup_logging(args.verbosity)
 
 	return args
 
@@ -1244,8 +1279,8 @@ def main(args):
 	# My Weapons
 	my_bow = load_weapons("longbow")
 	my_bow.name = "Dark Blood Longbow"
-	my_bow.magical = True
-	my_bow.bonus_magic = 1
+	# my_bow.magical = True
+	# my_bow.bonus_magic = 1
 	# my_bow.damage += [[1, 8, "psychic"]]
 
 	my_rapier = load_weapons("rapier")
@@ -1261,15 +1296,17 @@ def main(args):
 	# malorin.skill('stealth')
 	# malorin.tool('thieves')
 
-	print(malorin)
+	logging.info(malorin)
 
 	# print(weapon.keys())
 	weapon_attack(
 		attacker=malorin,
 		weapon=random.choice([my_bow]),
-		adv=random.choice([True]),
+		adv=args.adv,
+		dis=args.dis,
 		target=random.choice(["Boney Lizard"]),
 	)
+	# criticalhit(malorin, my_bow)
 
 	# All went well, so clean exit using None to return a 0 exit code
 	return None
