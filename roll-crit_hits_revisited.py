@@ -1240,7 +1240,6 @@ def main(args):
 	malorin = mypc("Malorin")
 	malorin.feature.append("Archery")
 	malorin.crits_revisited = True
-	malorin.crit = 3
 
 	# My Weapons
 	my_bow = load_weapons("longbow")
