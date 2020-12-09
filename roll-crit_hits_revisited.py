@@ -8,6 +8,8 @@ Critical Hits Revisited
 # Futures
 from __future__ import unicode_literals
 
+import sys
+import logging
 import csv
 import random
 import re
@@ -27,35 +29,13 @@ __author__ = "Buckley Collum"
 __copyright__ = "Copyright 2020, QuoinWorks"
 __credits__ = ["Buckley Collum"]
 __license__ = "GNU General Public License v3.0"
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 __maintainer__ = "Buckley Collum"
 __email__ = "buckleycollum@gmail.com"
 __status__ = "Dev"
 
 
-class Die(object):
-	def __init__(self, sides=6):
-		self.sides = sides
-
-	def roll(self):
-		return random.randint(1, self.sides)
-
-
-class NPC:
-	def __init__(
-			self, name, family, cr, as_str, as_dex, as_com, as_int, as_wis, as_cha, ac, hp
-	):
-		self.name = name
-		self.family = family
-		self.cr = cr
-		self.as_str = as_str
-		self.as_dex = as_dex
-		self.as_com = as_com
-		self.as_int = as_int
-		self.as_wis = as_wis
-		self.as_cha = as_cha
-		self.ac = ac
-		self.hp = hp
+default_loglevel = 'info'
 
 
 class Color:
@@ -590,7 +570,7 @@ damages = {
 }
 
 
-def dmg_icon(type="bludgeoning") -> str:
+def dmg_icon(damage_type="bludgeoning") -> str:
 	dmgs = {
 		"bludgeoning": "🔨",
 		"piercing": "🗡",
@@ -610,7 +590,7 @@ def dmg_icon(type="bludgeoning") -> str:
 	# 'necrotic': u'💀',
 	# 'radiant': u'💥',
 
-	return dmgs[type]
+	return dmgs[damage_type]
 
 
 addon = {
@@ -663,36 +643,36 @@ def csv_dict_list(variables_file):
 def insanity(i):
 	switcher = {
 		1: "Synesthesia. You can hear colors, smell sounds, or taste textures. "
-		   "Regardless of the specific manifestation, you have disadvantage on all "
-		   "Perception and Investigation skill checks.",
+			"Regardless of the specific manifestation, you have disadvantage on all "
+			"Perception and Investigation skill checks.",
 		2: "Kleptomania. Once per day when you are in a personal residence or marketplace, "
-		   "the DM can call on you to succeed on a Wisdom saving throw (DC 12) or "
-		   "attempt to steal an item of insignificant practical and monetary value.",
+			"the DM can call on you to succeed on a Wisdom saving throw (DC 12) or "
+			"attempt to steal an item of insignificant practical and monetary value.",
 		3: "Paranoia. Once per day following an interaction with another creature "
-		   "(including other PCs) the DM can call on you to succeed on a Wisdom saving "
-		   "throw (DC 12) or you suspect that creature is secretly plotting against you.",
+			"(including other PCs) the DM can call on you to succeed on a Wisdom saving "
+			"throw (DC 12) or you suspect that creature is secretly plotting against you.",
 		4: "Obsession. Choose a person or personal interest you are obsessed with. "
-		   "Once per day, when you are presented with an opportunity to interact with or "
-		   "learn more about the subject of your obsession, then the DM can call on you "
-		   "to succeed on a Wisdom saving throw (DC 14) or ignore everything else to "
-		   "obsess over the object of your fascination.",
+			"Once per day, when you are presented with an opportunity to interact with or "
+			"learn more about the subject of your obsession, then the DM can call on you "
+			"to succeed on a Wisdom saving throw (DC 14) or ignore everything else to "
+			"obsess over the object of your fascination.",
 		5: "Addiction. Choose a behavior or substance you have used."
-		   "Once per day, when you are presented with an opportunity to do "
-		   "the behavior or use the substance, the DM can call on you to succeed on a Wisdom "
-		   "saving throw (DC 14) or ignore everything else to indulge in your vice.",
+			"Once per day, when you are presented with an opportunity to do "
+			"the behavior or use the substance, the DM can call on you to succeed on a Wisdom "
+			"saving throw (DC 14) or ignore everything else to indulge in your vice.",
 		6: "Odd Thinking. Once per day when you hear a rational explanation for an event or "
-		   "occurrence, your DM may call on you to succeed on a Wisdom saving throw (DC 12) or "
-		   "you reject the rational explanation for a conspiratorial or fantastical explanation.",
+			"occurrence, your DM may call on you to succeed on a Wisdom saving throw (DC 12) or "
+			"you reject the rational explanation for a conspiratorial or fantastical explanation.",
 		7: "Narcissism. When you take an action or series of action that doesn’t directly benefit you, "
-		   "you must pass a Wisdom saving throw (DC 11) or you can’t take that action or series of actions. "
-		   "If any self-sacrifice on your part would be required, then the DC of the saving throw is "
-		   "increased to 16.",
+			"you must pass a Wisdom saving throw (DC 11) or you can’t take that action or series of actions. "
+			"If any self-sacrifice on your part would be required, then the DC of the saving throw is "
+			"increased to 16.",
 		8: "Delusional. When you gain this insanity, the DM will tell you a belief that you have. "
-		   "No matter what evidence is presented to the contrary, so long as you have this insanity, "
-		   "you cannot be persuaded that this belief is not true.",
+			"No matter what evidence is presented to the contrary, so long as you have this insanity, "
+			"you cannot be persuaded that this belief is not true.",
 		9: "Pica. Once per day the DM can call on you to pass a Wisdom saving throw (DC 14) or "
-		   "immediately eat one non-food object (such as dirt, napkins, or a small piece of jewelry) "
-		   "of the DM’s choice.",
+			"immediately eat one non-food object (such as dirt, napkins, or a small piece of jewelry) "
+			"of the DM’s choice.",
 		10: "Retrograde amnesia. You forget everything about your personal life prior to the moment "
 			"you received this insanity.",
 		11: "Overwhelmed. If you do not have immunity or resistance to psychic damage, "
@@ -765,11 +745,9 @@ def weapon_attack(
 
 	# If Rogue and has Advantage, then add sneak attack damage to weapon
 	if "Rogue" in attacker.cclass and adv:
-		regexp = re.compile("Rogue (\\d+)")
-		rogue_level = int(regexp.search(attacker.cclass).group(1))
-		# print(rogue_level)
-		# rogue_level = 4
-		weapon.damage += [[(rogue_level + 1) // 2, 6, "sneak"]]
+		regexp = re.compile("(\\d+).*Rogue")
+		rogue_level = int(regexp.search(attacker.cclass).group(1))  # get Rogue level
+		weapon.damage += [[(rogue_level + 1) // 2, 6, "sneak"]]  # append sneak damage to Weapon
 
 	attack_roll_str = attacker.attack_roll(adv, dis)
 
@@ -777,11 +755,12 @@ def weapon_attack(
 
 	# d20roll = d20.roll('20')
 	# Critical 20, for testing
+	logging.debug(d20roll.crit)
 	print(f'\tYour Attack roll is ', end='')
-	if d20roll.total >= attacker.crit:
+	if d20roll.crit == d20.CritType.CRIT or d20roll.total >= attacker.crit:
 		print(f"a Critical HIT: {d20roll.result}")
 		criticalhit(attacker, weapon, target)
-	elif d20roll.total == 1:
+	elif d20roll.crit == d20.CritType.FAIL:  # total == 1:
 		print(f"a Critical Fail: {d20roll.result}")
 		critical_miss(weapon)
 	else:
@@ -791,7 +770,7 @@ def weapon_attack(
 		print(
 			f"{attack_roll_str} + {attackbonus} = {attack_result_str} = {Color.YELLOW}{attack_result.total}{Color.ENDC}."
 		)
-		hitanddamage(attacker, weapon, attack_result.total, target)
+		hitanddamage(attacker, weapon, target)
 
 
 def die_roll_str(d) -> str:
@@ -801,16 +780,17 @@ def die_roll_str(d) -> str:
 def critical_miss(weapon=None):
 	print(f"{Color.RED}Critical Fail!{Color.ENDC}")
 
-	def indent(str) -> str:
-		return f"\t{str}"
+	def indent(my_paragraph) -> str:
+		return f"\t{my_paragraph}"
 
 	mymiss = roll(20)
 	if mymiss == 1:
 		if weapon:
 			if weapon.magical:
 				print(f"\tMagic backfires!")
+				magic_damage = d20.roll('+'.join([die_roll_str(weapon.damage[0]), str(weapon.bonus_magic)]))
 				print(
-					f"\tYou take {d20.roll('+'.join([die_roll_str(weapon.damage[0]), str(weapon.bonus_magic)])).result} points of {weapon.damage[0][2]} damage."
+					f"\tYou take {magic_damage.result} points of {weapon.damage[0][2]} damage."
 				)
 			elif weapon.list == "ranged":
 				print(
@@ -852,7 +832,7 @@ def critical_miss(weapon=None):
 		)
 
 
-def criticalhit(attacker, weapon, target=None, *, roll=0):
+def criticalhit(attacker, weapon, target=None, *, outside_roll=0):
 	"""Critical Hit"""
 	print(f"{Color.HEADER}Critical Hit!{Color.ENDC}")
 	rollmatch = {
@@ -878,16 +858,15 @@ def criticalhit(attacker, weapon, target=None, *, roll=0):
 		20: 9,
 	}
 
-	attacker.crits_revisited = True
-
+	title = effect = also = ''
 	if not attacker.crits_revisited:
+		# Double the number of dice rolls for criticals; e.g., change '2d6' to '4d6'
 		dice_roll_str = re.sub(
-			"(\d+)d", lambda m: str(int(m.groups()[0]) * 2) + "d", weapon.dice_roll_str
+			"(\\d+)d", lambda m: str(int(m.groups()[0]) * 2) + "d", weapon.dice_roll_str
 		)
 	else:
-
 		# Roll for Criticals Revisited lookup, if value not specified
-		my_crit_roll = d20.roll("1d20").total if not roll else roll
+		my_crit_roll = d20.roll("1d20").total if not outside_roll else outside_roll
 		primary_damage_type = weapon.damage[0][2]
 		title, value, effect, also = damages[primary_damage_type][
 			rollmatch[my_crit_roll]
@@ -907,52 +886,54 @@ def criticalhit(attacker, weapon, target=None, *, roll=0):
 		dice_roll_str = crits_revisited_hp(weapon, value)
 
 	dice_roll_str += f" + {attacker.damage_bonus(weapon)}"
-	# print(dice_roll_str)
-
+	logging.debug(dice_roll_str)
 	critdamage = d20.roll(dice_roll_str)
 
 	print(
-		f"\t{Color.HEADER}{title}{Color.ENDC} Your {weapon.name} does {critdamage.result} points of damage."
+		f"\t{Color.HEADER}{title}{Color.ENDC} Your {weapon.name} does {critdamage.result} points "
+		f"of {'magical ' if weapon.magical else ''}damage."
 	)
 
-	output = ""
-	if effect:
-		output += f"\t{Color.YELLOW}{effect}{Color.ENDC}\n"
+	if attacker.crits_revisited:
+		output = ""
+		if effect:
+			output += f"\t{Color.YELLOW}{effect}{Color.ENDC}\n"
 
-	# ToDo: Add Insanity handling
-	#  if also == 'insanity':
-	if also == "":
-		""" HACK to handle damage field that has '' instead of 'none' """
-		also = "none"
-	what, howmuch = addon[also]
-	# print(f" * {howmuch} {what}")
-	if what == "injury":
-		output += (
-			f"\t{Color.RED}{howmuch.title()} Injury: {injury(howmuch)}{Color.ENDC}\n"
+		# ToDo: Add Insanity handling
+		#  if also == 'insanity':
+		if also == "":
+			""" HACK to handle damage field that has '' instead of 'none' """
+			also = "none"
+		what, howmuch = addon[also]
+		logging.debug("%s, %s", what, howmuch)
+		# print(f" * {howmuch} {what}")
+		if what == "injury":
+			output += (
+				f"\t{Color.RED}{howmuch.title()} Injury: {injury(howmuch)}{Color.ENDC}\n"
+			)
+		elif what == "insanity":
+			output += f"\t{Color.YELLOW}Insanity: "
+			if howmuch == "advantage":
+				output += f"{insanity(advantage())}"
+			elif howmuch == "disadvantage":
+				output += f"{insanity(disadvantage())}"
+			else:
+				output += f"{insanity(roll())}"
+			output += f"{Color.ENDC}\n"
+		# ToDo: Clean-up TARGET name added into output
+		if target is not None:
+			pattern = re.compile(re.escape("creature"), re.IGNORECASE)
+			output = pattern.sub(target, output)
+
+		revision1 = (
+			append(output, "The creature", f" {target}") if target is not None else effect
 		)
-	elif what == "insanity":
-		output += f"\t{Color.YELLOW}Insanity: "
-		if howmuch == "advantage":
-			output += f"{insanity(advantage())}"
-		elif howmuch == "disadvantage":
-			output += f"{insanity(disadvantage())}"
-		else:
-			output += f"{insanity(roll())}"
-		output += f"{Color.ENDC}\n"
-	# ToDo: Clean-up TARGET name added into output
-	if target is not None:
-		pattern = re.compile(re.escape("creature"), re.IGNORECASE)
-		output = pattern.sub(target, output)
+		revision2 = append(revision1, "the same amount", f" ({critdamage.total})")
 
-	revision1 = (
-		append(output, "The creature", f" {target}") if target is not None else effect
-	)
-	revision2 = append(revision1, "the same amount", f" ({critdamage.total})")
-
-	wrapper = textwrap.TextWrapper(width=80, initial_indent="", subsequent_indent="  ")
-	word_list = wrapper.wrap(text=revision2)
-	for element in word_list:
-		print(element)
+		wrapper = textwrap.TextWrapper(width=80, initial_indent="", subsequent_indent="  ")
+		word_list = wrapper.wrap(text=revision2)
+		for element in word_list:
+			print(element)
 
 
 def crits_revisited_hp(weapon, value) -> str:
@@ -965,9 +946,10 @@ def crits_revisited_hp(weapon, value) -> str:
 	elif value == 2:
 		critdamage.append(primary_damage_sides)
 	elif value == 3:
+		# Double the number of dice rolled; e.g. change '2d6' to '4d6'
 		critdamage.append(
 			re.sub(
-				"(\d+)d",
+				"(\\d+)d",
 				lambda m: str(int(m.groups()[0]) * 2) + "d",
 				weapon.dice_roll_str,
 			)
@@ -982,7 +964,7 @@ def crits_revisited_hp(weapon, value) -> str:
 	return "+".join(critdamage)
 
 
-def hitanddamage(attacker, weapon, attackroll, target=None):
+def hitanddamage(attacker, weapon, target=None):
 	rollplus = ""
 	# print(attacker.feature)
 	if attacker.feature == "Great Weapon Fighting":
@@ -1042,24 +1024,40 @@ def injury(injurytype=""):
 	return injuryDescription[injurytype][rollmatch[roll(20)]]
 
 
-ordinal = lambda n: "%d%s" % (n, "tsnrhtdd"[(n / 10 % 10 != 1) * (n % 10 < 4) * n % 10:: 4],)
+def ordinal(n) -> str:
+	return f"{n}{'tsnrhtdd'[(n / 10 % 10 != 1) * (n % 10 < 4) * n % 10:: 4]}"
 
 
 def mypc(shortname="Malorin"):
+	import logging
 	import sqlite3
 
 	sqlfile = "/Users/buckley/Desktop/5e/oldone/oldone.sqlite3"
 	conn = sqlite3.connect(sqlfile)
 	c = conn.cursor()
 
-	hero = PC("Malorin")
+	pcid = 0
+	hero = PC(shortname)
 
-	# Select PC history
-	sqlcmd = f"SELECT PCID, Level, Race, Background, Specialty FROM pc WHERE ShortName='{shortname}';"
-	pcid, hero.level, hero.race, hero.background, hero.specialty = c.execute(
-		sqlcmd
-	).fetchone()
-	# print(f"{shortname} is a {race} who has been a {background}{' '+specialty if specialty else ''}.")
+	try:
+		# Select PC history
+		sqlite_select_query = f"SELECT PCID, Level, Race, Background, Specialty FROM pc WHERE ShortName='{shortname}';"
+		logging.debug(sqlite_select_query)
+		c.execute(sqlite_select_query)
+		try:
+			result = c.execute(sqlite_select_query).fetchone()
+			logging.debug(result)
+			if result is None:
+				return hero
+			pcid, hero.level, hero.race, hero.background, hero.specialty = result
+
+		except sqlite3.Error as error:
+			logging.error("Failed to read data from table: %s", error)
+			c.close()
+			return hero
+
+	except sqlite3.Error as error:
+		logging.error("Error while connecting to sqlite: %s", error)
 
 	# Select PC Class
 	sqlcmd = (
@@ -1070,11 +1068,11 @@ def mypc(shortname="Malorin"):
 	classes = []
 	for r in row:
 		(cl, sub, lvl) = r
-		classes.append(f"{sub} {cl} {ordinal(lvl)}")
+		classes.append(f"{ordinal(lvl)} level {sub} {cl}")
 		# Champion Fighter - Improved Critical (19 or 20)
 		if cl == "Fighter" and sub == "Champion":
 			hero.crit = 19
-	hero.cclass = f"{', '.join(classes)}"
+	hero.cclass = f"{' and '.join(classes)}"
 
 	# Select Ability Scores
 	sqlcmd = (
@@ -1103,50 +1101,29 @@ def mypc(shortname="Malorin"):
 
 	hero.skill()
 	hero.tool()
+
+	if conn:
+		conn.close()
+
 	return hero
-
-
-def set_weapon(handle=None):
-	import csv_importer
-	import weapons
-
-	weapon = {}
-	if handle is None:
-		print(f"Warning: set_weapon requires a name, e.g. dagger")
-		return
-
-	for row in weapons.data:
-		newname = row["name"].replace(" ", "_").lower()
-		if handle == newname:
-			return Weapon(
-				row["name"],
-				row["category"],
-				row["distance"],
-				row["cost"],
-				row["damagetype"],
-				row["rollstr"],
-				row["weight"],
-				row["properties"],
-			)
-
-	print(f"Hmm; I did not find a weapon called {handle}")
-	return
 
 
 def load_weapons(handle=None):
 	import json
 	import re
-
-	weapons_json = r"Base_WeaponsList.json"
-	with open(weapons_json, "r") as dataFile:
+	from pathlib import Path
+	data_folder = None
+	data_folder = Path(data_folder or Path.cwd())
+	weapons_json_file = data_folder / r"Base_WeaponsList.json"
+	with open(weapons_json_file, "r") as dataFile:
 		data = dataFile.read()
 	obj = json.loads(data)
 
 	for k, v in obj.items():
 		# newname = v["name"].replace(" ", "_").lower()
-		pattern = r"\b" + v["regExpSearch"]
+		pattern = re.compile(r"\b" + v["regExpSearch"], re.IGNORECASE)
 		# print(f"{handle} -- {v['name']} -- {v['regExpSearch']}")
-		if re.search(pattern, handle, re.IGNORECASE):
+		if re.search(pattern, handle):
 			# print(handle)
 			my_weapon = Weapon(name=handle)
 			for i in v.keys():
@@ -1234,16 +1211,43 @@ def get_mpmb_js(request: object = False) -> None:
 # 	print(f"{key}") if i%5 == 4 else print(f"{key}  ", end="")
 
 
-def main():
+def setup_logging(verbosity=0):
+	import os
+	import logging
+
+	logging.debug(os.getenv('LOGLEVEL', 'WARNING').upper())
+	base_loglevel = getattr(logging, (os.getenv("LOGLEVEL", default_loglevel)).upper())
+	verbosity = min(verbosity, 2)
+	loglevel = base_loglevel - (verbosity * 10)
+	logging.basicConfig(level=loglevel, format=" • %(message)s")
+
+
+def parse_args():
+	import argparse
+
+	parser = argparse.ArgumentParser(
+		description="RPG PC and Weapon roller."
+	)
+	args = parser.parse_args()
+
+	setup_logging()
+
+	return args
+
+
+def main(args):
 	# My PC
 	malorin = mypc("Malorin")
 	malorin.feature.append("Archery")
+	malorin.crits_revisited = True
+	malorin.crit = 3
 
 	# My Weapons
 	my_bow = load_weapons("longbow")
 	my_bow.name = "Dark Blood Longbow"
-	# my_bow.magical = True
-	# my_bow.bonus_magic = 1
+	my_bow.magical = True
+	my_bow.bonus_magic = 1
+	# my_bow.damage += [[1, 8, "psychic"]]
 
 	my_rapier = load_weapons("rapier")
 	my_rapier.name = f"Ebony Needle {my_rapier.name}"
@@ -1258,14 +1262,20 @@ def main():
 	# malorin.skill('stealth')
 	# malorin.tool('thieves')
 
+	print(malorin)
+
 	# print(weapon.keys())
 	weapon_attack(
 		attacker=malorin,
 		weapon=random.choice([my_bow]),
-		adv=True,
+		adv=random.choice([True]),
 		target=random.choice(["Boney Lizard"]),
 	)
 
+	# All went well, so clean exit using None to return a 0 exit code
+	return None
+
 
 if __name__ == "__main__":
-	main()
+	ret = main(parse_args())  # main(sys.argv[1:])
+	sys.exit(0 if ret is None else ret)
